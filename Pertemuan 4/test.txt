@@ -1,4 +1,0 @@
-Selamat Datang 
-Universitas Muhammadiyah CirebonLatihan Python
-
-Latihan Python
