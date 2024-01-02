@@ -1,0 +1,86 @@
+Microsoft Windows [Version 10.0.22631.2861]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>cd\
+
+C:\>cd xampp
+
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 27
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database mahasiswa;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> use mahasiswa;
+Database changed
+MariaDB [mahasiswa]> create table mahasiswa(
+    -> id int primary key auto_increment,
+    -> nim varchar(10) unique,
+    -> nama varchar(100),
+    -> jk char(1),
+    -> prodi varchar(10));
+Query OK, 0 rows affected (0.071 sec)
+
+MariaDB [mahasiswa]> show tables;
++---------------------+
+| Tables_in_mahasiswa |
++---------------------+
+| mahasiswa           |
++---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [mahasiswa]> describe matakuliah;
+ERROR 1146 (42S02): Table 'mahasiswa.matakuliah' doesn't exist
+MariaDB [mahasiswa]> describe mahasiswa;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nim   | varchar(10)  | YES  | UNI | NULL    |                |
+| nama  | varchar(100) | YES  |     | NULL    |                |
+| jk    | char(1)      | YES  |     | NULL    |                |
+| prodi | varchar(10)  | YES  |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+5 rows in set (0.033 sec)
+
+MariaDB [mahasiswa]> insert into mahasiswa(nim,nama,jk,prodi)values('220511030','Rizky Pratama','L','TIF');
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [mahasiswa]> insert into mahasiswa(nim,nama,jk,prodi)values('220511035','Muhammad Farhan Saino','L','TIF');
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [mahasiswa]> insert into mahasiswa(nim,nama,jk,prodi)values('220511074','Rafi Zaidan Rabbani','L','TIF');
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [mahasiswa]> insert into mahasiswa(nim,nama,jk,prodi)values('220511088','Muhammad Hidayat','L','TIF');
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [mahasiswa]> insert into mahasiswa(nim,nama,jk,prodi)values('220511144','Muhammad Daffa Raditha Pratama','L','TIF');
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [mahasiswa]> select * from matakuliah;
+ERROR 1146 (42S02): Table 'mahasiswa.matakuliah' doesn't exist
+MariaDB [mahasiswa]> select * from mahasiswa;
++----+-----------+--------------------------------+------+-------+
+| id | nim       | nama                           | jk   | prodi |
++----+-----------+--------------------------------+------+-------+
+|  1 | 220511030 | Rizky Pratama                  | L    | TIF   |
+|  2 | 220511035 | Muhammad Farhan Saino          | L    | TIF   |
+|  3 | 220511074 | Rafi Zaidan Rabbani            | L    | TIF   |
+|  4 | 220511088 | Muhammad Hidayat               | L    | TIF   |
+|  5 | 220511144 | Muhammad Daffa Raditha Pratama | L    | TIF   |
++----+-----------+--------------------------------+------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [mahasiswa]>
